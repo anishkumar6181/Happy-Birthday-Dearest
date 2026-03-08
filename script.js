@@ -285,12 +285,12 @@ function launchPageConfetti() {
 // LIGHTBOX
 // ===========================
 const galleryData = [
-  { src: 'images/childhood.jpg',  fallback: 'https://picsum.photos/seed/sisters1/800/600',  caption: 'Our childhood fights 😂' },
-  { src: 'images/family.jpg',     fallback: 'https://picsum.photos/seed/travel22/800/600',  caption: 'Our family ❤️' },
-  { src: 'images/waterfall.jpg',  fallback: 'https://picsum.photos/seed/sisters3/800/600',  caption: 'Best Moments ❤️' },
-  { src: 'images/birthday.jpg',   fallback: 'https://picsum.photos/seed/birthday44/800/600',caption: 'Crazy birthday parties 🎉' },
-  { src: 'images/school_day.jpg', fallback: 'https://picsum.photos/seed/sisters55/800/600', caption: 'Those school day memories 📚' },
-  { src: 'images/friends.jpg',    fallback: 'https://picsum.photos/seed/fun66/800/600',     caption: 'Being absolutely silly together 🤪' }
+  { src: 'images/group.jpg',  fallback: 'https://picsum.photos/seed/sisters1/800/600',  caption: 'Our childhood fights 😂' },
+  { src: 'images/family.jpeg',     fallback: 'https://picsum.photos/seed/travel22/800/600',  caption: 'Our family ❤️' },
+  { src: 'images/sister.jpeg',  fallback: 'https://picsum.photos/seed/sisters3/800/600',  caption: 'Best Moments ❤️' },
+  { src: 'images/birhday.jpeg',   fallback: 'https://picsum.photos/seed/birthday44/800/600',caption: 'Crazy birthday parties 🎉' },
+  { src: 'images/school.jpeg', fallback: 'https://picsum.photos/seed/sisters55/800/600', caption: 'Those school day memories 📚' },
+  { src: 'images/friends.jpeg',    fallback: 'https://picsum.photos/seed/fun66/800/600',     caption: 'your favorite 🤪' }
 ];
 
 let currentLightboxIdx = 0;
@@ -369,10 +369,13 @@ const quizQuestions = [
   },
   {
     photo: 'https://picsum.photos/seed/quiz5/700/300',
-    photoLabel: '🌟 Your Dream',
-    question: 'What is the one big dream you want to achieve in life this year? ⭐',
-    answer: 'doctor',
-    hint: 'You shared this with me once — it starts with your heart\'s biggest wish 💫'
+    photoLabel: '🌟 Your Nick Name',
+    question: 'What is the cute nickname everyone calls you? ⭐',
+    answer: 'kabbo',
+    hint: 'use this name when I’m being sweet to you.💫'
+  },
+  {
+
   }
 ];
 
