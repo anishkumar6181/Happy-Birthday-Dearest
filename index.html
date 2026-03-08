@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#3b0764" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Happy Birthday Dearest Sister! 🎂</title>
+  <meta name="description" content="A special birthday surprise website made with love for the best sister ever!" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Floating Hearts Container -->
+  <div id="hearts-container"></div>
+
+  <!-- Confetti Container -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ===== SECTION 1: HERO ===== -->
+  <section id="hero">
+    <div id="balloons-container"></div>
+
+    <div class="hero-content">
+      <div class="hero-emoji-row">🎀 🎂 🎁 🌸 🎊</div>
+      <h1 class="hero-title">Happy Birthday to the<br/><span class="highlight">Best Sister Ever!</span></h1>
+      <p class="hero-sub">A small surprise website made just for you ❤️</p>
+      <button id="open-surprise-btn" class="btn-primary" onclick="scrollToSection('memories')">
+        Open Your Surprise 🎁
+      </button>
+    </div>
+
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle Birthday Music">🎵</button>
+  </section>
+
+  <!-- ===== SECTION 2: MEMORY GALLERY ===== -->
+  <section id="memories">
+    <div class="section-header">
+      <span class="section-tag">💝 Precious Memories</span>
+      <h2 class="section-title">Our Beautiful Story</h2>
+      <p class="section-sub">Every picture holds a thousand laughs, tears, and love.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Card 0: Childhood school days (4 kids in uniform) -->
+      <div class="gallery-card" onclick="openLightbox(0)">
+        <div class="gallery-img-wrap">
+          <img src="images/group.jpg" alt="Childhood school days" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/sisters1/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Our Squad 💪</p>
+      </div>
+
+      <!-- Card 1: Family group photo -->
+      <div class="gallery-card" onclick="openLightbox(1)">
+        <div class="gallery-img-wrap">
+          <img src="images/family.jpeg" alt="Our family together" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/travel22/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Our family ❤️</p>
+      </div>
+
+      <!-- Card 2: Waterfall adventure -->
+      <div class="gallery-card" onclick="openLightbox(2)">
+        <div class="gallery-img-wrap">
+          <img src="images/sister.jpeg" alt="Adventure at the waterfall" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/sisters3/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Best Moments ❤️</p>
+      </div>
+
+      <!-- Card 3: Birthday celebration -->
+      <div class="gallery-card" onclick="openLightbox(3)">
+        <div class="gallery-img-wrap">
+          <img src="images/birhday.jpeg" alt="Birthday celebration" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/birthday44/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Crazy birthday parties 🎉</p>
+      </div>
+
+      <!-- Card 4: School day memories (2 girls in uniform) -->
+      <div class="gallery-card" onclick="openLightbox(4)">
+        <div class="gallery-img-wrap">
+          <img src="images/school.jpeg" alt="School day memories" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/sisters55/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Those school day memories 📚</p>
+      </div>
+
+      <!-- Card 5: Friends selfie -->
+      <div class="gallery-card" onclick="openLightbox(5)">
+        <div class="gallery-img-wrap">
+          <img src="images/friends.jpeg" alt="Friends together" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/fun66/400/300'" />
+          <div class="gallery-overlay">🔍 View</div>
+        </div>
+        <p class="gallery-caption">Your favourite 🤪</p>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox hidden">
+      <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <button class="lightbox-nav prev" onclick="changeLightbox(-1)">‹</button>
+        <img id="lightbox-img" src="" alt="" />
+        <p id="lightbox-caption"></p>
+        <button class="lightbox-nav next" onclick="changeLightbox(1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: QUIZ GAME ===== -->
+  <section id="quiz">
+    <div class="section-header">
+      <span class="section-tag">🧠 Fun Quiz</span>
+      <h2 class="section-title">How Well Do You Know Your Life? 😄</h2>
+      <p class="section-sub">Answer these fun questions — no cheating! 😜</p>
+    </div>
+
+    <div class="quiz-container">
+      <div class="quiz-progress-bar">
+        <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+      </div>
+      <p id="quiz-progress-text" class="quiz-progress-text">Question 1 of 5</p>
+
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-photo-wrap">
+          <img id="quiz-photo" src="" alt="Quiz photo" />
+          <div class="quiz-photo-label" id="quiz-photo-label">🌟</div>
+        </div>
+
+        <div class="quiz-body">
+          <p id="quiz-question" class="quiz-question"></p>
+          <input type="text" id="quiz-answer" class="quiz-input" placeholder="Type your answer here... ✍️" />
+          <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+          <div class="quiz-btn-row">
+            <button class="btn-secondary" onclick="checkAnswer()">Submit Answer ✅</button>
+            <button class="btn-ghost" onclick="skipQuestion()">Skip ⏭️</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="quiz-result" class="quiz-result hidden">
+        <div class="quiz-result-emoji" id="quiz-result-emoji">🎉</div>
+        <h3 id="quiz-result-title">Quiz Complete!</h3>
+        <p id="quiz-result-msg"></p>
+        <button class="btn-primary" onclick="restartQuiz()">Play Again 🔄</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: SECRET MESSAGE ===== -->
+  <section id="secret">
+    <div class="section-header">
+      <span class="section-tag">💌 Something Special</span>
+      <h2 class="section-title">I Have a Secret for You...</h2>
+      <p class="section-sub">From my heart to yours. Click below when you're ready 🥹</p>
+    </div>
+
+    <div class="secret-center">
+      <div class="secret-envelope" id="secret-envelope" onclick="openSecretMessage()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-heart">💌</div>
+        <p class="envelope-hint">Click to open your secret message</p>
+      </div>
+    </div>
+
+    <!-- Secret Message Modal -->
+    <div id="secret-modal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeSecretModal()"></div>
+      <div class="modal-box secret-modal-box">
+        <button class="modal-close" onclick="closeSecretModal()">✕</button>
+        <div class="secret-msg-header">
+          <span>💌</span>
+          <h3>A message from the heart</h3>
+        </div>
+        <div id="secret-typed-text" class="secret-typed-text"></div>
+        <div class="secret-signature">— With all my love 💕</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: BIRTHDAY FINALE ===== -->
+  <section id="finale">
+    <div class="section-header">
+      <span class="section-tag">🎂 Grand Finale</span>
+      <h2 class="section-title">Make a Wish! 🌟</h2>
+      <p class="section-sub">Blow out the candles and make it count! 🎇</p>
+    </div>
+
+    <div class="cake-container">
+      <div class="cake" id="cake">
+        <!-- Candles -->
+        <div class="candles-row" id="candles-row">
+          <div class="candle" data-idx="0"><div class="flame"></div></div>
+          <div class="candle" data-idx="1"><div class="flame"></div></div>
+          <div class="candle" data-idx="2"><div class="flame"></div></div>
+          <div class="candle" data-idx="3"><div class="flame"></div></div>
+          <div class="candle" data-idx="4"><div class="flame"></div></div>
+        </div>
+
+        <!-- Cake Tiers -->
+        <div class="cake-tier cake-top">
+          <div class="cake-deco">★ ★ ★</div>
+        </div>
+        <div class="cake-tier cake-middle">
+          <div class="cake-deco">🎂 Happy Birthday! 🎂</div>
+        </div>
+        <div class="cake-tier cake-bottom">
+          <div class="cake-deco">♥ ♥ ♥ ♥ ♥</div>
+        </div>
+        <div class="cake-plate"></div>
+      </div>
+
+      <button id="blow-btn" class="btn-primary blow-btn" onclick="blowCandles()">
+        Blow the Candles 🎂
+      </button>
+
+      <div id="finale-message" class="finale-message hidden">
+        <div class="finale-message-emojis">🎊 🎉 🎈 🥳 🎁</div>
+        <h2>Happy Birthday My Amazing Sister! 🎉</h2>
+        <p>May this year bring you all the joy, love, and laughter you deserve! You are my sunshine every single day. ☀️</p>
+      </div>
+    </div>
+
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworks-canvas"></canvas>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>Made with 💖 just for you — Happy Birthday! 🎂</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
